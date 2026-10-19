@@ -27,7 +27,9 @@
             txtTitle = new TextBox();
             txtRating = new TextBox();
             txtArtist = new TextBox();
-            button1 = new Button();
+            btnAdd = new Button();
+            txtSelected = new TextBox();
+            btnDelete = new Button();
             SuspendLayout();
             // 
             // listSong
@@ -37,6 +39,7 @@
             listSong.Name = "listSong";
             listSong.Size = new Size(685, 264);
             listSong.TabIndex = 0;
+            listSong.SelectedIndexChanged += OnChanged;
             // 
             // txtTitle
             // 
@@ -64,22 +67,47 @@
             txtArtist.Size = new Size(215, 27);
             txtArtist.TabIndex = 3;
             // 
-            // button1
+            // btnAdd
             // 
-            button1.Location = new Point(616, 284);
-            button1.Name = "button1";
-            button1.Size = new Size(81, 33);
-            button1.TabIndex = 4;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += OnAdd;
+            btnAdd.Location = new Point(616, 282);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(81, 33);
+            btnAdd.TabIndex = 4;
+            btnAdd.Tag = "";
+            btnAdd.Text = "추가";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += OnAdd;
+            // 
+            // txtSelected
+            // 
+            txtSelected.Enabled = false;
+            txtSelected.Location = new Point(12, 324);
+            txtSelected.Name = "txtSelected";
+            txtSelected.PlaceholderText = "삭제를 위해 선택된 노래";
+            txtSelected.ReadOnly = true;
+            txtSelected.Size = new Size(598, 27);
+            txtSelected.TabIndex = 5;
+            txtSelected.TabStop = false;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Enabled = false;
+            btnDelete.Location = new Point(616, 324);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(81, 29);
+            btnDelete.TabIndex = 6;
+            btnDelete.Text = "삭제";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += OnDelete;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(709, 329);
-            Controls.Add(button1);
+            ClientSize = new Size(709, 363);
+            Controls.Add(btnDelete);
+            Controls.Add(txtSelected);
+            Controls.Add(btnAdd);
             Controls.Add(txtArtist);
             Controls.Add(txtRating);
             Controls.Add(txtTitle);
@@ -96,6 +124,8 @@
         private TextBox txtTitle;
         private TextBox txtRating;
         private TextBox txtArtist;
-        private Button button1;
+        private Button btnAdd;
+        private TextBox txtSelected;
+        private Button btnDelete;
     }
 }
